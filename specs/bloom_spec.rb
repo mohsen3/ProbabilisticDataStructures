@@ -26,9 +26,9 @@ describe Bloom do
       bloom = Bloom.new(2048, 5)
       1000.times { |i| bloom.add(i.to_s) }
       false_negatives = 1000.times.count do |i|
-        bloom.include?(i.to_s)
+        !bloom.include?(i.to_s)
       end
-      expect(false_negatives).to eq 1000
+      expect(false_negatives).to eq 0
     end
   end
 end
